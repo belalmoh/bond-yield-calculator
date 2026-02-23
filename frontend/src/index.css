@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --color-finance-50: #f0f9ff;
+  --color-finance-100: #e0f2fe;
+  --color-finance-200: #bae6fd;
+  --color-finance-300: #7dd3fc;
+  --color-finance-400: #38bdf8;
+  --color-finance-500: #0ea5e9;
+  --color-finance-600: #0284c7;
+  --color-finance-700: #0369a1;
+  --color-finance-800: #075985;
+  --color-finance-900: #0c4a6e;
+  --color-finance-950: #082f49;
+}
+
+@layer base {
+  :root {
+    --bg-main: theme('colors.slate.50');
+    --bg-card: theme('colors.white');
+    --bg-toggle: theme('colors.slate.100');
+    --bg-toggle-active: theme('colors.white');
+    --border-card: theme('colors.slate.200 / 60%');
+    --text-primary: theme('colors.slate.900');
+    --text-secondary: theme('colors.slate.500');
+    --text-muted: theme('colors.slate.400');
+    --input-bg: theme('colors.slate.50');
+    --input-border: theme('colors.slate.200');
+    --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --btn-shadow: theme('shadow.lg') theme('colors.finance.200');
+  }
+
+  .dark {
+    --bg-main: #020617;
+    /* Slate-950 / Deep Dark Blue */
+    --bg-card: #0f172a;
+    /* Slate-900 / Darker Blue */
+    --bg-toggle: #1e293b;
+    /* Slate-800 */
+    --bg-toggle-active: #334155;
+    /* Slate-700 */
+    --border-card: #1e293b;
+    /* Slate-800 */
+    --text-primary: #f8fafc;
+    /* Slate-50 */
+    --text-secondary: theme('colors.slate.400');
+    --text-muted: theme('colors.slate.500');
+    --input-bg: #0f172a;
+    --input-border: #1e293b;
+    --card-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --btn-shadow: none;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    @apply antialiased transition-colors duration-300;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .bento-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    box-shadow: var(--card-shadow);
+    @apply rounded-3xl hover:shadow-md transition-all duration-300 overflow-hidden;
+  }
+
+  .glass-card {
+    @apply bg-white/70 dark:bg-slate-900/40 backdrop-blur-md rounded-3xl border border-white/40 dark:border-white/10 shadow-sm transition-all duration-300;
+  }
+
+  .metric-label {
+    color: var(--text-secondary);
+    @apply text-xs font-medium uppercase tracking-wider mb-1;
+  }
+
+  .metric-value {
+    color: var(--text-primary);
+    @apply text-2xl font-semibold;
+  }
+
+  .input-field {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-primary);
+    @apply w-full px-4 py-3 rounded-2xl focus:ring-2 focus:ring-finance-400 dark:focus:ring-finance-900 focus:border-finance-400 outline-none transition-all;
+  }
+
+  .error-banner {
+    @apply p-3 bg-red-50 dark:bg-red-950/40 border border-red-100 dark:border-red-900/40 text-red-600 dark:text-red-400 rounded-xl text-sm flex items-center gap-2;
+  }
+
+  .toggle-container {
+    background-color: var(--bg-toggle);
+    @apply grid grid-cols-2 gap-2 p-1.5 rounded-2xl;
+  }
+
+  .toggle-btn-active {
+    background-color: var(--bg-toggle-active);
+    color: var(--text-primary);
+    @apply py-2 px-4 rounded-xl text-sm font-bold shadow-sm;
+  }
+
+  .toggle-btn-inactive {
+    @apply py-2 px-4 rounded-xl text-sm font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-all;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 dark:bg-slate-800 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-300 dark:bg-slate-700;
+}
