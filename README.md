@@ -42,19 +42,24 @@ By default:
 - **Frontend** runs on port `3005`
 - **Backend** runs on port `3006`
 
-#### 1. Start the Backend
+A `Makefile` is provided in the root directory to streamline the installation and execution processes.
+
+#### 1. Quick Setup
+To install dependencies for both the frontend and backend, and to automatically copy the `.env` files:
 ```bash
-cd backend
-npm install
-npm run start:dev
+make setup-all
+```
+
+#### 2. Start the Backend
+```bash
+make run-backend
 ```
 The NestJS server will start on `http://localhost:3006`.
 
-#### 2. Start the Frontend
+#### 3. Start the Frontend
+In a new terminal or tab, run:
 ```bash
-cd frontend
-npm install
-npm run dev
+make run-frontend
 ```
 The Vite development server will start on `http://localhost:3005`.
 
