@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-finance-50: #f0f9ff;
   --color-finance-100: #e0f2fe;

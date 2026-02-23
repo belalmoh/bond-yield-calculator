@@ -11,7 +11,7 @@ export interface BondInputs {
 export interface CashFlow {
     period: number;
     paymentDate: string;
-    payment: number;
+    couponPayment: number;
     cumulativeInterest: number;
     remainingPrincipal: number;
 }
@@ -19,8 +19,8 @@ export interface CashFlow {
 export interface BondCalculationResponse {
     currentYield: number;
     yieldToMaturity: number;
-    totalInterestEarned: number;
-    status: 'Premium' | 'Discount' | 'Par';
+    totalInterest: number;
+    status: 'premium' | 'discount' | 'par';
     cashFlows: CashFlow[];
 }
 
