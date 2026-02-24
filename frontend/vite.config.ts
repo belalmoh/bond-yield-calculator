@@ -5,7 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
   const frontendPort = parseInt(env.PORT || '3000');
-  const backendPort = env.BACKEND_PORT || '3006';
 
   return {
     plugins: [
@@ -17,12 +16,6 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       port: frontendPort,
-      proxy: {
-        '/api': {
-          target: `http://localhost:${backendPort}`,
-          changeOrigin: true,
-        },
-      },
     },
   }
 })

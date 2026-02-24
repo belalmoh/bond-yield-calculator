@@ -1,10 +1,10 @@
 import type { BondInputs, BondCalculationResponse } from '../types';
 
-const API_BASE_URL = '/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || '';
 
 export const bondService = {
     calculate: async (inputs: BondInputs): Promise<BondCalculationResponse> => {
-        const response = await fetch(`${API_BASE_URL}/bond/calculate`, {
+        const response = await fetch(`${API_BASE_URL}/api/bond/calculate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
