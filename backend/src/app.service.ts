@@ -46,22 +46,22 @@ export class AppService {
 		const precision = 0.0001;
 
 		for (let i = 0; i < maxIterations; i++) {
-			let pv = 0;
+			let presentValue = 0;
 			let derivative = 0;
 
 			// PV and Derivative calculation for each coupon payment
 			for (let t = 1; t <= totalPeriods; t++) {
 				const discountFactor = Math.pow(1 + ytm / countPerYear, t);
-				pv += couponPayment / discountFactor;
+				presentValue += couponPayment / discountFactor;
 				derivative += ((-t * couponPayment) / countPerYear) / (Math.pow(1 + ytm / countPerYear, t + 1));
 			}
 
 			// PV and Derivative calculation for the final face value payment
 			const finalDiscountFactor = Math.pow(1 + ytm / countPerYear, totalPeriods);
-			pv += faceValue / finalDiscountFactor;
+			presentValue += faceValue / finalDiscountFactor;
 			derivative += ((-totalPeriods * faceValue) / countPerYear) / (Math.pow(1 + ytm / countPerYear, totalPeriods + 1));
 
-			const error = pv - marketPrice;
+			const error = presentValue - marketPrice;
 
 			if (Math.abs(error) < precision) {
 				return ytm * 100;
