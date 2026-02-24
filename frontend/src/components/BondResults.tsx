@@ -111,6 +111,7 @@ export const BondResults: React.FC = () => {
                                             <th className="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-200 uppercase tracking-[0.2em]">Period</th>
                                             <th className="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-200 uppercase tracking-[0.2em]">Payment Date</th>
                                             <th className="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-200 uppercase tracking-[0.2em] text-right">Coupon</th>
+                                            <th className="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-200 uppercase tracking-[0.2em] text-right">Cumulative Interest</th>
                                             <th className="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-200 uppercase tracking-[0.2em] text-right">Remaining</th>
                                         </tr>
                                     </thead>
@@ -122,6 +123,7 @@ export const BondResults: React.FC = () => {
                                                     {new Intl.DateTimeFormat('en-GB').format(new Date(flow.paymentDate))}
                                                 </td>
                                                 <td className="px-6 py-4 text-right font-bold text-finance-600 dark:text-finance-400">${flow.couponPayment.toFixed(2)}</td>
+                                                <td className="px-6 py-4 text-right font-mono text-emerald-600 dark:text-emerald-400 text-sm font-semibold">${flow.cumulativeInterest.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                                                 <td className="px-6 py-4 text-right font-mono text-slate-400 dark:text-slate-400 text-xs">${flow.remainingPrincipal.toLocaleString()}</td>
                                             </tr>
                                         ))}
